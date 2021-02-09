@@ -6,8 +6,6 @@ pygame.init()
 pygame.font.init()
 
 
-clock = pygame.time.Clock()
-
 # Main arena dimensions and program name
 arena_x = 700
 arena_y = 400
@@ -60,6 +58,10 @@ def draw_dice_digitTwo(text, color):
     screen_text = myfont.render(text, True, color)
     arena.blit(screen_text, [x_digit2, y_digit2])
 
+def draw_summ(text, color):
+    screen_text = mainfont.render(text, True, color)
+    arena.blit(screen_text, [520, 350])
+
 def main_text(text, color):
     screen_text = mainfont.render(text, True, color)
     arena.blit(screen_text, [100, 0])
@@ -91,6 +93,7 @@ while game_running:
         arena.fill((background_color))
         pygame.draw.rect(arena, dice_color, (x_dice1, y_dice1, width_dice, height_dice))
         pygame.draw.rect(arena, dice_color, (x_dice2, y_dice2, width_dice, height_dice))
+        draw_summ(f"Summ = {dice1+dice2}",WHITE)
         draw_dice_digit(f"{dice1}", digit_color)
         draw_dice_digitTwo(f"{dice2}", digit_color)
         time.sleep(0.01)
